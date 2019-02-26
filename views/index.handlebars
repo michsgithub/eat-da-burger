@@ -1,0 +1,46 @@
+{{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
+<div class="container">
+    <h2>Eat-Da-Burger</h2>
+
+    <div class="row">
+        <!-- Undevoured Burgers -->
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <ul>
+                    {{#each burgers}}
+                        {{#unless devoured}}
+                            <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                            <button type="button" class="eatburger btn btn-warning" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class=""></span>Devour</button>
+                            <hr>
+                        {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <!-- Devoured Burgers -->
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <ul>
+                    {{#each burgers}}
+                        {{#if devoured}}
+                            <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                            <button type="button" class="trashburger btn btn-danger" id ="trashbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class=""></span>Remove</button>
+                            <hr>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div><!-- /row -->
+
+    <div class="addBurger">
+        <form class="create-form">
+            <h5>Enter a burger and click the Submit button</h5>
+                <div class="form-group">
+                    <input type="text" id="newburger" name="burger">
+                </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</div><!-- /container -->
